@@ -2,3 +2,4 @@
 venv
 .Rproj.user
 __pycache__
+rproj.egg-info

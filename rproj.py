@@ -25,11 +25,14 @@ def use_template(template_filename,
         template_data = render_template(template_filename, context)
         f.write(template_data)
 
-def create_package(projname):
+def create_project_dir(projname):
     try:
         os.mkdir(projname)
     except FileExistsError:
         print(f"Directory {projname} already exists")
+
+def create_package(projname):
+    create_project_dir(projname)
     
     context = {
         "project_type": "package",
@@ -46,9 +49,20 @@ def create_package(projname):
     use_template('hello.R', os.path.join(projname, 'R'))
     use_template('hello.Rd', os.path.join(projname, 'man'))
 
+def create_shinyapp(projname):
+    create_project_dir(projname)
+
+    context = {
+        "project_type": "package",
+        "projname": projname
+    }
+    use_template('template.Rproj', projname, projname + '.Rproj', context)
+    use_template('app.R', projname, context = context)
+
+
 @click.command()
 @click.option('--project-type', default="default",
-              type=click.Choice(["default", "package"]),
+              type=click.Choice(["default", "package", "shiny-app"]),
               help="The project type. Can be either default or package")
 @click.argument('projname')
 def rproj(project_type, projname):
@@ -66,8 +80,8 @@ def rproj(project_type, projname):
         use_template('template.Rproj', os.getcwd(), rproj_fname, context)
     elif project_type == "package":
         create_package(projname)
-    else:
-        print("Please ")
+    elif project_type == "shiny-app":
+        create_shinyapp(projname)
 
 
 if __name__ == "__main__":

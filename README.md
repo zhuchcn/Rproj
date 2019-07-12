@@ -3,9 +3,9 @@
 ## Installation
 
 ```
-git clone https://github.com/zhuchcn/Rproj
-cd Rproj
-pip install -e .
+$ git clone https://github.com/zhuchcn/Rproj
+$ cd Rproj
+$ pip install -e .
 ```
 
 ## Usage
@@ -13,11 +13,17 @@ pip install -e .
 Create a .Rproj file in current directory.
 
 ```
-rproj my_project
+$ rproj my_project
 ```
 
 Create a R package skeleton.
 
 ```
-rproj --project-type package my_package
+$ rproj --project-type package my_package
+```
+
+Create a Shiny App skeleton.
+
+```
+$ rproj --project-type shiny-app my_app
 ```
