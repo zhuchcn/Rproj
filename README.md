@@ -3,7 +3,7 @@
 ## Installation
 
 ```
-$ pip install git+git://github.com/zhuchcn/Rproj.git
+$ pip install git+https://github.com/zhuchcn/Rproj.git
 ```
 
 ## Usage
