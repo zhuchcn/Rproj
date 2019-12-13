@@ -3,9 +3,7 @@
 ## Installation
 
 ```
-$ git clone https://github.com/zhuchcn/Rproj
-$ cd Rproj
-$ pip install -e .
+$ pip install git+git://github.com/zhuchcn/Rproj.git
 ```
 
 ## Usage
